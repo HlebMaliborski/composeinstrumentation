@@ -8,12 +8,12 @@ buildscript {
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.devlopersquad.plugin") version "1.0"
+    // id("com.devlopersquad.plugin") version "1.0"
     alias(libs.plugins.compose.compiler)
 }
-instrumentation {
+/*instrumentation {
     instrumentedClasses = emptyList<String>()
-}
+}*/
 // apply(plugin = "com.devlopersquad.plugin")
 android {
     namespace = "com.devlopersquad.jetpackcompose"
@@ -36,6 +36,10 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        debug {
+            isMinifyEnabled = false
+
         }
     }
     compileOptions {
