@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:2.0.0")
+    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:2.0.10")
     compileOnly("com.google.auto.service:auto-service-annotations:1.1.1")
     kapt("com.google.auto.service:auto-service:1.1.1")
 }
