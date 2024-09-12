@@ -18,6 +18,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        val a = HelloWorld()
+
+        val b = Person("dsa")
+
+
         setContent {
             ComposeInstrumentationTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
