@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.plugin.PLUGIN_CLASSPATH_CONFIGURATION_NAME
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
@@ -8,13 +9,9 @@ buildscript {
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    // id("com.devlopersquad.plugin") version "1.0"
     alias(libs.plugins.compose.compiler)
 }
-/*instrumentation {
-    instrumentedClasses = emptyList<String>()
-}*/
-// apply(plugin = "com.devlopersquad.plugin")
+
 android {
     namespace = "com.devlopersquad.jetpackcompose"
     compileSdk = 34
@@ -57,6 +54,16 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+}
+
+tasks.withType<KotlinCompile> {
+    val functionPrinterPluginId = "com.devlopersquad.kotlin.compose"
+    compilerOptions {
+        freeCompilerArgs = listOf(
+            "-P",
+            "plugin:$functionPrinterPluginId:tag=Hello GDG 4",
+        )
     }
 }
 

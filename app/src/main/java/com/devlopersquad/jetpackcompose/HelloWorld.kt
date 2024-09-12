@@ -1,11 +1,8 @@
 package com.devlopersquad.jetpackcompose
 
-import com.devlopersquad.jetpackcompose.ui.theme.Piecemeal
-
-/**
- *
- */
-@Piecemeal
 public class HelloWorld {
-
+    fun test3() {
+        val a = 1
+        val b = 1 + 2
+    }
 }

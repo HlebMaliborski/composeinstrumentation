@@ -15,13 +15,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.devlopersquad.jetpackcompose.ui.theme.ComposeInstrumentationTheme
 
 class MainActivity : ComponentActivity() {
+    private val helloWorld = HelloWorld()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val a = HelloWorld()
-
-        val b = Person("dsa")
-
 
         setContent {
             ComposeInstrumentationTheme {
@@ -30,7 +28,9 @@ class MainActivity : ComponentActivity() {
                         name = "Android",
                         modifier = Modifier
                             .padding(innerPadding)
-                            .clickable { }
+                            .clickable {
+                                helloWorld.test3()
+                            }
                     )
                 }
             }

@@ -9,10 +9,10 @@ import org.jetbrains.kotlin.config.CompilerConfigurationKey
 @OptIn(ExperimentalCompilerApi::class)
 @AutoService(CommandLineProcessor::class)
 class ComposeCommandLineProcessor : CommandLineProcessor {
-    companion object {
-        private const val OPTION_STRING = "string"
+    public companion object {
+        private const val OPTION_STRING = "tag"
 
-        val ARG_STRING = CompilerConfigurationKey<String>(OPTION_STRING)
+        public val ARG_STRING = CompilerConfigurationKey<String>(OPTION_STRING)
     }
 
     override val pluginId: String = "com.devlopersquad.kotlin.compose"
@@ -20,7 +20,7 @@ class ComposeCommandLineProcessor : CommandLineProcessor {
         CliOption(
             optionName = OPTION_STRING,
             valueDescription = "string",
-            description = "sample string argument",
+            description = ARG_STRING.toString(),
             required = false,
         ),
     )
