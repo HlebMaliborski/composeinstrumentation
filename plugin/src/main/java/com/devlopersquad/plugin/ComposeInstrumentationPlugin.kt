@@ -24,7 +24,7 @@ public class ComposeInstrumentationPlugin : Plugin<Project> {
         // After that we have to listen when the Android Gradle plugin is applied to the project and retrieve the
         val androidComponents = project.extensions.getByType(AndroidComponentsExtension::class.java)
         androidComponents.onVariants { variant ->
-            variant.instrumentation.setAsmFramesComputationMode(FramesComputationMode.COMPUTE_FRAMES_FOR_ALL_CLASSES)
+            variant.instrumentation.setAsmFramesComputationMode(FramesComputationMode.COMPUTE_FRAMES_FOR_INSTRUMENTED_CLASSES)
             variant.instrumentation.transformClassesWith(
                 InstrumentationPluginFactory::class.java,
                 InstrumentationScope.ALL
@@ -45,10 +45,7 @@ public class ComposeInstrumentationPlugin : Plugin<Project> {
         }
 
         override fun isInstrumentable(classData: ClassData): Boolean {
-
-            if (classData.className.contains("Test")) {
-                println(classData.className)
-            }
+            println(classData.className)
             return parameters.get().instrumentedClasses.get().contains(classData.className)
         }
     }

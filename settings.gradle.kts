@@ -18,4 +18,3 @@ dependencyResolutionManagement {
 rootProject.name = "ComposeInstrumentation"
 include(":app")
 include(":plugin")
-include(":compiler-compose")

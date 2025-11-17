@@ -16,6 +16,7 @@ version = "1.0"
 gradlePlugin {
     plugins {
         register("instrumentation") {
+            version = 2.0.toString()
             description = "compose"
             displayName = "compose"
             id = "com.devlopersquad.plugin"
@@ -32,7 +33,7 @@ dependencies {
         create<MavenPublication>("maven") {
             groupId = "com.devlopersquad.plugin"
             artifactId = "instrumentation"
-            version = "1.0"
+            version = "2.0"
 
             from(components["java"])
         }

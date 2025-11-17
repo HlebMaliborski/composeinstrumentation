@@ -1,6 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.PLUGIN_CLASSPATH_CONFIGURATION_NAME
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 buildscript {
     repositories {
         mavenLocal()
@@ -9,7 +6,11 @@ buildscript {
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.devlopersquad.plugin") version "2.0"
     alias(libs.plugins.compose.compiler)
+}
+instrumentation {
+    instrumentedClasses = listOf("androidx.compose.foundation.ClickableKt")
 }
 
 android {
@@ -34,10 +35,6 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
-        debug {
-            isMinifyEnabled = false
-
-        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -57,18 +54,8 @@ android {
     }
 }
 
-tasks.withType<KotlinCompile> {
-    val functionPrinterPluginId = "com.devlopersquad.kotlin.compose"
-    compilerOptions {
-        freeCompilerArgs = listOf(
-            "-P",
-            "plugin:$functionPrinterPluginId:tag=Hello GDG 4",
-        )
-    }
-}
-
 dependencies {
-    PLUGIN_CLASSPATH_CONFIGURATION_NAME(project(":compiler-compose"))
+    implementation("androidx.startup:startup-runtime:1.1.1")
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.12.0")
